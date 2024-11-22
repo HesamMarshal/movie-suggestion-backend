@@ -4,6 +4,7 @@ import { extname, join } from 'path';
 import { BadRequestException } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { ValidationMessage } from '../messages/message.enum';
+import { File } from 'multer';
 
 // Define Types
 export type CallbackDestination = (
@@ -13,7 +14,8 @@ export type CallbackDestination = (
 
 export type CallbackFilename = (error: Error | null, filename: string) => void;
 
-export type MulterFile = Express.Multer.File;
+// export type MulterFile = Express.Multer.File;
+export type MulterFile = File;
 // End Define Types
 
 // Helper Functions
