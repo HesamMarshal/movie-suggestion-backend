@@ -39,7 +39,7 @@ jobs:
           local-dir: dist/                       # Folder to deploy
           server-dir: ${{ secrets.REMOTE_DIR }}  # Remote directory
           protocol: ftps                         # Use ftps for secure connections
-          concurrency: 3                         # Limit the number of parallel uploads
+          concurrency: 1                         # Limit the number of parallel uploads
           retries: 3                             # Add retry attempts
           retry-interval: 5000                   # Interval between retries (in ms)
           log-level: verbose                     # Detailed logs for debugging
