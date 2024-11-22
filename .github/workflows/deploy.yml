@@ -38,4 +38,4 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: dist  # Folder to deploy
           server-dir: ${{ secrets.REMOTE_DIR }}
-          protocol: ftps  # Secure FTP
+          protocol: ftps  # Secure FTP 
