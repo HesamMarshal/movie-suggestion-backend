@@ -28,7 +28,6 @@ async function bootstrap() {
 
   // Start Server
   const PORT = process.env.PORT;
-  console.log(process.env);
 
   await app.listen(PORT, () => {
     console.log(`Root:    http://localhost:${PORT}`);
