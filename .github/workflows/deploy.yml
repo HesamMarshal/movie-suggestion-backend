@@ -36,6 +36,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}  # FTP username
           password: ${{ secrets.FTP_PASSWORD }}  # FTP password
           port: ${{ secrets.FTP_PORT }}          # FTP port, e.g., 21 or 22
-          local-dir: dist                        # Folder to deploy
+          local-dir: dist/                       # Folder to deploy
           server-dir: ${{ secrets.REMOTE_DIR }}  # Remote directory
           protocol: ftps                         # Use ftps for secure connections
+          log-level: verbose             # Detailed logs for debugging
