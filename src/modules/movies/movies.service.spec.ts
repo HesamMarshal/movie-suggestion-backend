@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { MoviesService } from './movies.service';
-import { MoviesRepository } from './movies.repository';
+import { MoviesRepository } from './repositories/movies.repository';
+import { MoviesService } from './services/movies.service';
 
 describe('MoviesService', () => {
   let service: MoviesService;
@@ -28,7 +28,7 @@ describe('MoviesService', () => {
 
   it('should create a new movie if it does not exist', async () => {
     jest.spyOn(repo, 'findByTmdbId').mockResolvedValue(null);
-    jest.spyOn(repo, 'save').mockResolvedValue({ id: 1, title: 'Test Movie' });
+    // jest.spyOn(repo, 'save').mockResolvedValue({ id: 1, title: 'Test Movie' });
 
     const dto = { title: 'Test Movie', tmdbId: 123 } as any;
     const result = await service.createMovie(dto);
@@ -39,7 +39,7 @@ describe('MoviesService', () => {
 
   it('should return trending movies', async () => {
     const movies = [{ id: 1, title: 'Test Movie' }];
-    jest.spyOn(repo, 'find').mockResolvedValue(movies);
+    // jest.spyOn(repo, 'find').mockResolvedValue(movies);
 
     const result = await service.getTrendingMovies();
     expect(result).toEqual(movies);
