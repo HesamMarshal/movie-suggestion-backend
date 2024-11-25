@@ -36,10 +36,13 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}  # FTP username
           password: ${{ secrets.FTP_PASSWORD }}  # FTP password
           port: ${{ secrets.FTP_PORT }}          # FTP port, e.g., 21 or 22
+          # port: 1394                             # SFTP port
           local-dir: dist/                       # Folder to deploy
           server-dir: ${{ secrets.REMOTE_DIR }}  # Remote directory
-          protocol: ftps                         # Use ftps for secure connections
-          concurrency: 1                         # Limit the number of parallel uploads
-          retries: 3                             # Add retry attempts
-          retry-interval: 5000                   # Interval between retries (in ms)
+          # protocol: sftp                         # Use SFTP protocol
+          protocol: ftp                         # Use ftps for secure connections
+          mode: active                           # Enable active mode
+          # concurrency: 1                         # Limit the number of parallel uploads
+          # retries: 3                             # Add retry attempts
+          # retry-interval: 5000                   # Interval between retries (in ms)
           log-level: verbose                     # Detailed logs for debugging
