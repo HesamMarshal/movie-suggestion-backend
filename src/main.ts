@@ -8,6 +8,23 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  // Enable CORS
+  app.enableCors({
+    origin: [
+      'http://localhost:3000', // Development frontend
+      'https://frontend.whattowatch.ir', // Production frontend
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
+    credentials: true, // Allow credentials (if needed)
+  });
+
+  // const isDevelopment = process.env.NodeEnv === 'development';
+  // app.enableCors({
+  //   origin: isDevelopment
+  //     ? 'http://localhost:3000'
+  //     : 'https://frontend.whattowatch.ir',
+  // });
+
   // Configure Swagger
   SwaggerConfigInit(app);
 
@@ -25,23 +42,6 @@ async function bootstrap() {
 
   // Activate Cookie Parser
   app.use(cookieParser(process.env.COOKIE_SECRET));
-
-  // Enable CORS
-  app.enableCors({
-    origin: [
-      'http://localhost:3000', // Development frontend
-      'https://frontend.whattowatch.ir', // Production frontend
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
-    credentials: true, // Allow credentials (if needed)
-  });
-
-  // const isDevelopment = process.env.NodeEnv === 'development';
-  // app.enableCors({
-  //   origin: isDevelopment
-  //     ? 'http://localhost:3000'
-  //     : 'https://frontend.whattowatch.ir',
-  // });
 
   // Start Server
   const PORT = process.env.PORT;
