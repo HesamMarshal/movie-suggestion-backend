@@ -10,13 +10,20 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: [
-      'http://localhost:3000', // Development frontend
-      'https://frontend.whattowatch.ir', // Production frontend
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
-    credentials: true, // Allow credentials (if needed)
+    origin: '*',
+    methods: '*',
+    allowedHeaders: '*',
+    credentials: true,
   });
+
+  // app.enableCors({
+  //   origin: [
+  //     'http://localhost:3000', // Development frontend
+  //     'https://frontend.whattowatch.ir', // Production frontend
+  //   ],
+  //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
+  //   credentials: true, // Allow credentials (if needed)
+  // });
 
   // const isDevelopment = process.env.NodeEnv === 'development';
   // app.enableCors({
